@@ -71,3 +71,45 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+--------
+PASOS PARA LA CREACIÓN DEL PROYECTO
+
+1.Instalación de Nest JS local 
+
+```bash
+npx @nestjs/cli new nombre-del-proyecto
+```
+2.Entrar a la carpeta del proyecto
+
+```bash
+cd nombre-proyecto
+```
+
+3.Vincular el repositorio de GitHub con el proyecto local creado por Nest:
+
+```bash
+git remote add origin https://github.com/tu-usuario/nombre-del-repositorio.git
+git branch -M main
+git push -u origin main
+```
+
+4.Prender el servidor con el comando
+
+```bash
+npm run start:dev
+```
+
+En el navegador deberíamos ver en localhost: 3000, Hello World!.
+
+5.Instalación de dependencias
+
+5.1 Conexión a base de datos
+Vamos a la documentación y en la sección RECIPES entramos a TYPEORM.
+En el aviso de Warning damos click en here.
+En consola copiamos el siguiente comando para la TypeORM Integration.
+
+```bash
+npm install --save @nestjs/typeorm typeorm mysql2
+```
+
