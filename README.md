@@ -127,4 +127,10 @@ npm install --save @nestjs/jwt passport-jwt bcrypt
 npm install --save @nestjs/passport passport passport-local
 ```
 
+5.4 Instalación de Class-validator y class-transformer: Para validaciones y transformación de objetos (esto ya viene por defecto con NestJS, pero es bueno asegurarse de que esté instalado).
+
+```bash
+npm install --save class-validator class-transformer
+```
+
 
