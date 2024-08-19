@@ -133,4 +133,9 @@ npm install --save @nestjs/passport passport passport-local
 npm install --save class-validator class-transformer
 ```
 
+5.5 Instalación de NestJS Config: Para manejar variables de entorno y configuraciones
+
+```bash
+npm install --save @nestjs/config
+```
 
