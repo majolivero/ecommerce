@@ -112,4 +112,13 @@ En consola copiamos el siguiente comando para la TypeORM Integration.
 ```bash
 npm install --save @nestjs/typeorm typeorm mysql2
 ```
+*@nestjs/typeorm, typeorm: Necesario para trabajar con bases de datos usando TypeORM.
+*mysql2: Driver para conectar a MySQL.
+
+5.2 Instalación de JWT y Bcrypt para la autenticación y el hashing de contraseñas
+
+```bash
+npm install --save @nestjs/jwt passport-jwt bcrypt
+```
+
 
