@@ -121,6 +121,12 @@ npm install --save @nestjs/typeorm typeorm mysql2
 npm install --save @nestjs/jwt passport-jwt bcrypt
 ```
 
+Instlación de los tipos de bcrypt:
+
+```bash
+npm i -D @types/bcrypt
+```
+
 5.3 Instalación de Passport: NestJS usa passport para la autenticación
 
 ```bash

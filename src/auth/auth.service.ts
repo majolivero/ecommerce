@@ -1,14 +1,20 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
+import { RegisterDto } from './dto/register.dto';
 
 @Injectable()
 export class AuthService {
 
     constructor(private readonly usersService: UsersService){}
 
-    register(){
-        return 'register';
+    async register(registerDto: RegisterDto){
+        //Antes de hacer la inserción verificar si ese usuario existe o no en la base de datos
+        const user = await this.usersService.findOneByEmail(registerDto.email);
+        if(user){
+            throw new BadRequestException('User already exists');  //Manejo de errores con exception filters. Esto crea un error ya controlado con Nest
+        }
+        return await this.usersService.create(registerDto);
     }
     login(){
         return 'login';
