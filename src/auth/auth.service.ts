@@ -3,6 +3,8 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
 
+import * as bcrypt from 'bcryptjs';
+
 @Injectable()
 export class AuthService {
 
@@ -16,6 +18,7 @@ export class AuthService {
         }
         return await this.usersService.create(registerDto);
     }
+    
     login(){
         return 'login';
     }
