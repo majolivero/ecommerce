@@ -139,3 +139,22 @@ npm install --save class-validator class-transformer
 npm install --save @nestjs/config
 ```
 
+6.Una vez el proceso de instalacción de nestjs config este completo vamos a app.module.ts e importamos el modulo ConfigModule. 
+
+```bash
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+
+@Module({
+  imports: [ConfigModule.forRoot()],
+})
+export class AppModule {}
+```
+
+***Diferencia entre autenticación y autorización***
+
+**Autenticación:** Es el proceso de verificar la identidad del usuario. Se asegura de que el usuario sea quien dice ser, generalmente a través de credenciales como nombre de usuario y contraseña. La autenticación se utiliza para conceder acceso a usuarios legítimos y evitar el acceso no autorizado.
+
+**Autorización:** Es el proceso de determinar que acciones o recursos un usuario autenticado tiene permitido acceder o realizar. Una vez que un usuario autenticado, la autorización se encarga de verificar si ese usuario tiene los permisos adecuados para realizar ciertas acciones o acceder a ciertas partes de la aplicación.
+
+**Guard:** Son un mecanismo que te permite controlar el acceso a rutas o endpoints de tu aplicación. Los Guards se ejecutan antes de que se procese una solicitud a una ruta determinada y pueden permitir o denegar el acceso en función de ciertas condiciones o lógica de negocio. 
