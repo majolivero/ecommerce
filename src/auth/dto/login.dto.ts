@@ -1,16 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { IsString, IsEmail, MinLength } from 'class-validator';
+import { IsEmail, IsString, MinLength } from 'class-validator';
 import { Transform } from 'class-transformer';
-
-export class RegisterDto{
+export class LoginDto {
 
     @IsEmail()
-    email:string;
+    email: string;
 
     @Transform(({ value }) => value.trim())
     @IsString()
     @MinLength(4)
-    password:string;
-
-    rol:string;
+    password: string;
 }

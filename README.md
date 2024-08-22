@@ -121,6 +121,12 @@ npm install --save @nestjs/typeorm typeorm mysql2
 npm install --save @nestjs/jwt passport-jwt bcrypt
 ```
 
+Instlacion de solo JWT token segun la documentación:
+
+```bash
+npm install --save @nestjs/jwt
+```
+
 Instalación de los tipos de bcrypt:
 
 ```bash
@@ -150,7 +156,7 @@ npm install --save class-validator class-transformer
 npm install --save @nestjs/config
 ```
 
-6.Una vez el proceso de instalacción de nestjs config este completo vamos a app.module.ts e importamos el modulo ConfigModule. 
+6.Una vez el proceso de instalación de nestjs config este completo vamos a app.module.ts e importamos el modulo ConfigModule. 
 
 ```bash
 import { Module } from '@nestjs/common';
@@ -160,6 +166,12 @@ import { ConfigModule } from '@nestjs/config';
   imports: [ConfigModule.forRoot()],
 })
 export class AppModule {}
+```
+
+7. Instalación de guards
+
+```bash
+nest g guard auth --no-spec
 ```
 
 ***Diferencia entre autenticación y autorización***
