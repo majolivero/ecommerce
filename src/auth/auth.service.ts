@@ -4,7 +4,7 @@ import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import * as bcryptjs from 'bcryptjs';
-import { JwtService } from "@nestjs/jwt";
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
@@ -13,17 +13,20 @@ export class AuthService {
                 private readonly jwtService: JwtService,
     ){}
 
-    async register({email,password,rol}:RegisterDto){
+    async register({email,password}:RegisterDto){
         //Antes de hacer la inserción verificar si ese usuario existe o no en la base de datos
         const user = await this.usersService.findOneByEmail(email);
         if(user){
             throw new BadRequestException('User already exists');  //Manejo de errores con exception filters. Esto crea un error ya controlado con Nest
         }
-        return await this.usersService.create({
+        await this.usersService.create({
             email,
-            password: await bcryptjs.hash(password,10),  //Contraseña hasheada
-            rol
+            password: await bcryptjs.hash(password,10) //Contraseña hasheada
         });
+
+        return {
+            email
+        }
     }
     
     async login({email,password}: LoginDto){
@@ -36,7 +39,7 @@ export class AuthService {
             throw new UnauthorizedException("Password is wrong");
         }
 
-        const payload = {email: user.email} //Payload indica los datos que van a viajar en el token
+        const payload = {email: user.email, rol:user.rol} //Payload indica los datos que van a viajar en el token
 
         const token = await this.jwtService.signAsync(payload)
 
@@ -44,5 +47,10 @@ export class AuthService {
             token,
             email
         };
+    }
+
+    async profile({email, rol} : {email:string; rol:string}){
+        
+        return await this.usersService.findOneByEmail(email);
     }
 }

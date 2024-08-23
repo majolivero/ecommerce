@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
         }
       );
       //Al request le podamos inyectar o agregar información, en este caso, le estamos inyectando un usuario
-      request['user'] = payload;
+      request.user = payload;
     }catch {
       throw new UnauthorizedException();
     }

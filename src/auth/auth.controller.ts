@@ -4,6 +4,15 @@ import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from './guard/auth.guard';
+import { Roles } from './decorators/roles.decorator';
+import { RolesGuard } from './guard/roles.guard';
+
+interface RequestWithUser extends Request {
+    user:{
+        email: string;
+        rol: string;
+    }
+}
 
 @Controller('auth')
 export class AuthController {
@@ -22,16 +31,17 @@ export class AuthController {
         @Body()
         loginDto:LoginDto,
     ){
-        return this.authService.login(loginDto)
+        return this.authService.login(loginDto);
     }
 
     //Ruta ejemplo para probar guard
     @Get('profile')
-    @UseGuards(AuthGuard)   //Decorador para hacer la conexión con el guard. Cada vez que queramos llamar al profile va a entrar a UseGuards, y a su vez este entra al canActivate
+    @Roles('user')    //Decorador personalizado, metadato
+    @UseGuards(AuthGuard, RolesGuard)   //Decorador para hacer la conexión con el guard. Cada vez que queramos llamar al profile va a entrar a UseGuards, y a su vez este entra al canActivate. Este useGuard verifica si el token existe
     profile(
         @Request()
-        req
+        req : RequestWithUser,  //Este request viene de express
     ){
-        return req.user
+        return this.authService.profile(req.user);
     }
 }
