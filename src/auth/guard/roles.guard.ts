@@ -2,7 +2,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';  //A traves de reflector se pueden leer los metadatos
 import { ROLES_KEY } from '../../auth/decorators/roles.decorator';
-import { Rol } from '../enums/rol.enum';
+import { Rol } from '../../common/enums/rol.enum';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

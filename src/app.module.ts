@@ -7,6 +7,8 @@ import configurationApp from 'config/configuration-app';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
 
 
 @Module({
@@ -27,7 +29,9 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true
     }),
     UsersModule,
-    AuthModule],
+    AuthModule,
+    ProductModule,
+    OrderModule],
   controllers: [AppController],
   providers: [AppService],
 })
