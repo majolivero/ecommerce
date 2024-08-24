@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Body, Get, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, Get, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -49,10 +49,7 @@ export class AuthController {
 
     @Get('profile')
     @Auth(Rol.ADMIN)    //Decorador personalizado, metadato. Puedo crear mi propio decorador para autorizar al usuario siempre y cuando tenga un rol definido. Creo el decorador en la carpeta decorators
-    profile(
-        @Request()
-        req : RequestWithUser,  //Este request viene de express
-    ){
+    profile(@Request()req : RequestWithUser){
         return this.authService.profile(req.user);
     }
 }
