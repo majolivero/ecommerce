@@ -24,6 +24,11 @@ export class RolesGuard implements CanActivate {
 
     const { user } = context.switchToHttp().getRequest();
 
+    //El administrador puede hacer cualquier cosa que pueda hacer el usuario. Este usuario administrador puede hacer todo en la base de datos
+    if(user.rol === Rol.ADMIN) {
+      return true;
+    }
+
     return rol === user.rol;
   }
 }

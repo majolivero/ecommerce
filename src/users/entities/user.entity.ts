@@ -15,8 +15,8 @@ export class User {
     @Column({nullable: false, select: false }) //select:false para que no me devuelva la password
     password:string;
 
-    @Column({default:'user', enum: Rol})
-    rol:string;
+    @Column({ type: 'enum', default: Rol.USER, enum: Rol })
+    rol:Rol;
 
     @OneToMany(() => Order, (order) => order.user)
     orders: Order[];

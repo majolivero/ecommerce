@@ -8,6 +8,8 @@ import { LoginDto } from './dto/login.dto';
 //import { RolesGuard } from './guard/roles.guard';
 import { Rol } from '../common/enums/rol.enum';
 import { Auth } from './decorators/auth.decorator';
+import { ActiveUser } from 'src/common/decorators/active-user.decorator';
+import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
 
 interface RequestWithUser extends Request {
     user:{
@@ -48,8 +50,8 @@ export class AuthController {
     // }
 
     @Get('profile')
-    @Auth(Rol.ADMIN)    //Decorador personalizado, metadato. Puedo crear mi propio decorador para autorizar al usuario siempre y cuando tenga un rol definido. Creo el decorador en la carpeta decorators
-    profile(@Request()req : RequestWithUser){
-        return this.authService.profile(req.user);
+    @Auth(Rol.USER)    //Decorador personalizado, metadato. Puedo crear mi propio decorador para autorizar al usuario siempre y cuando tenga un rol definido. Creo el decorador en la carpeta decorators
+    profile(@ActiveUser() user:UserActiveInterface){
+        return this.authService.profile(user);
     }
 }
