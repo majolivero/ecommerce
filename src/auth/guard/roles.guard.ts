@@ -28,6 +28,11 @@ export class RolesGuard implements CanActivate {
     if(user.rol === Rol.ADMIN) {
       return true;
     }
+    
+    //Permite acceder a ambos roles
+    if(rol === Rol.BOTH){
+      return true;
+    }
 
     return rol === user.rol;
   }

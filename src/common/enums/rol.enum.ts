@@ -2,4 +2,5 @@
 export enum Rol {
     USER = 'user',
     ADMIN = 'admin',
+    BOTH = 'both'
 }

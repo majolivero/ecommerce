@@ -11,7 +11,7 @@ export class Product {
     @Column()
     name:string;
 
-    @Column('decimal')
+    @Column()
     price:number;
 
     @Column({type: 'text', nullable: true})
