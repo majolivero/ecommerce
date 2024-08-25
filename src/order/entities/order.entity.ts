@@ -7,7 +7,10 @@ import { Product } from '../../product/entities/product.entity';
 export class Order {
 
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
+
+    @Column()
+    userId: number; 
 
     @ManyToOne(() => User, user => user.orders)
     user:User;
@@ -20,6 +23,6 @@ export class Order {
     })
     products: Product[];
 
-    @Column({ type: 'decimal', precision:10, scale: 2})
+    @Column()
     totalPrice: number;
 }

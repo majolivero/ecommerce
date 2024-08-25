@@ -4,7 +4,9 @@ import { IsNotEmpty,IsNumber, IsArray, ArrayMinSize } from 'class-validator';
 export class CreateOrderDto {
     @IsNotEmpty()
     @IsNumber()
-    userId: number
+    userId: number;
+
+    productIds: number[];
 
     @IsNotEmpty()
     @IsArray()
