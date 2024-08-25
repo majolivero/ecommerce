@@ -13,7 +13,7 @@ export class UsersService {
   constructor(@InjectRepository(User) private readonly userRepository:Repository<User>) {}
 
   //Para crear el login y el register solo necesito el metodo create y findOneByEmail
-  create(createUserDto: CreateUserDto): Promise <User> {
+  create(createUserDto: CreateUserDto) {
     const salt = bcrypt.genSaltSync(10);
     createUserDto.password = bcrypt.hashSync(createUserDto.password, salt);
     const newUser = this.userRepository.create(createUserDto);
@@ -66,9 +66,5 @@ export class UsersService {
     return{
       message: `User with ID ${id} has been removed successfully`,
     };
-  }
-
-  async validatePassword(plainPassword: string, hashedPassword:string): Promise<boolean>{
-    return bcrypt.compare(plainPassword, hashedPassword);
   }
 }

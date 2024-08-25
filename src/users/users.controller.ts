@@ -35,7 +35,7 @@ export class UsersController {
     return user;
   }
 
-  //Ruta para obtener un usuario por su id
+  //Ruta para actualizar un usuario por su id
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     const user = await this.usersService.update(+id, updateUserDto);
@@ -51,19 +51,6 @@ export class UsersController {
     await this.usersService.remove(+id);
     return { 
       message: `User with ID ${id} has been removed succesfully`
-    };
-  }
-
-  //Ruta para login de usuario
-  @Post('login')
-  async login(@Body() LoginUserDto: CreateUserDto){
-    const user = await this.usersService.findByEmailWithPassword(LoginUserDto.email);
-    if (!user || !(await this.usersService.validatePassword(LoginUserDto.password, user.password))){
-      throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
-    }
-    return {
-      message: 'Login successful',
-      user,
     };
   }
 }

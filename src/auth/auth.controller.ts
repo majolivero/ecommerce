@@ -11,12 +11,12 @@ import { Auth } from './decorators/auth.decorator';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
 import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
 
-interface RequestWithUser extends Request {
-    user:{
-        email: string;
-        rol: string;
-    }
-}
+// interface RequestWithUser extends Request {
+//     user:{
+//         email: string;
+//         rol: string;
+//     }
+// }
 
 @Controller('auth')
 export class AuthController {
